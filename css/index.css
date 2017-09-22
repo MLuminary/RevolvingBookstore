@@ -83,6 +83,7 @@ html,body {
   color: #fff;
   text-decoration: none;
   margin-right: 1rem;
+  cursor: pointer;
 }
 
 .nav-join-link {
@@ -318,7 +319,7 @@ html,body {
 }
 
 /* 视频页面 */
-/* 
+
 #video {
   position: fixed;
   left: 0;
@@ -326,7 +327,28 @@ html,body {
   top: 0;
   bottom: 0;
   z-index: 5;
-} */
+}
+
+#video .close {
+  position: absolute;
+  font-size: 5rem;
+  color: #fff;
+  right: 5px;
+  cursor: pointer;
+  z-index: 99;
+}
+
+#video .msg {
+  position: absolute;
+  top: 2rem;
+  font-size: 3rem;
+  z-index: 99;
+  color: #fff;
+  text-align: center;
+  left: 0;
+  right: 0;
+  display: none;
+}
 
 /* 加载页面 */
 
