@@ -9,6 +9,9 @@
       joinBtn = $('.nav-join-link'),
       backTop = $('.nav-join .back');
 
+ // 与视频有关元素
+  var videoBox = $('#video'),
+      videoContent = $('#video video');
 
   // 根字体自适应
   var bodyWidth = 1980,
@@ -99,16 +102,14 @@
     $('.text').fadeIn();
     $('.loadingNum').fadeOut(function(){
       $('#loading').fadeOut(800);
+      videoContent[0].play();
     }); 
     container.fadeIn();
   },imgList)
 
   //接受视频地址
 
-  // 与视频有关元素
-
-  var videoBox = $('#video'),
-      videoContent = $('#video video');
+ 
   $.ajax({
     type : 'get',
     url : "http://www.kilingzhang.com/api/url.php?url_id=f05485j0nx5",
