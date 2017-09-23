@@ -36,7 +36,7 @@ $('.loadingNum').loadingTool(function(){
 joinBtn.click(function () {
   mainbody.fadeOut();
   footer.fadeOut();
-  container.css({'background-image':'url(./images/m-backjoin.jpg)','height':"100%"});
+  container.css({'background-image':'url(./images/m-##backjoin.jpg)','height':"100%"});
 })
 
 // 返回首页
