@@ -1,0 +1,63 @@
+html,body{
+  height: 100%;
+}
+
+#nav {
+  height: 7rem;
+  line-height: 7rem;
+}
+.nav-title {
+  margin-left: 20px;
+  font-size: 5rem;
+}
+.nav-join a{
+  font-size: 4rem;
+}
+
+#container {
+  background: url("../images/m-backimage.jpg") center top no-repeat;
+  background-size: cover;
+}
+
+
+/* mainbody */
+
+#mainbody {
+  background-color: rgba(255, 255, 255, .3);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.list {
+  position: relative;
+  font-family: "fzys";
+  color: #555;
+  text-align: center;
+  line-height: 2.5rem;
+  font-size: 4rem;
+}
+
+.list p{
+  width: 60%;
+  margin: 0 auto;
+}
+
+.list .page1 img {
+  width: 100%;
+}
+
+.list .page5 img {
+  width: 60%;
+}
+
+.list .item {
+  margin-top: 5rem;
+}
+
+/* 视频 */
+
+.close span{
+  font-size: 20rem;
+  color: #fff;
+}

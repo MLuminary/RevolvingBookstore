@@ -1,91 +1,44 @@
 ; (function () {
-  //获取的内容
+
+  //如果是移动端就跳转
+  var browser = {
+    versions: function () {
+      var u = navigator.userAgent, app = navigator.appVersion;
+      return {//移动终端浏览器版本信息
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+        iPad: u.indexOf('iPad') > -1, //是否iPad
+        webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+      };
+    }(),
+    language: (navigator.browserLanguage || navigator.language).toLowerCase()
+  }
+
+  if (browser.versions.mobile || browser.versions.ios || browser.versions.android ||
+    browser.versions.iPhone || browser.versions.iPad) {
+    window.location.href = "mobilePage.html";
+  }
+
+
+  var icons = $('.buttons .normal'),
+    content = $('.list'),
+    buttons = $('.buttons');
+
   var mainbody = $('#mainbody'),
-      footer = $('#footer'),
-      container = $('#container'),
-      content = $('.list'),
-      buttons = $('.buttons'),
-      icons = $('.buttons .normal'),
-      joinBtn = $('.nav-join-link'),
-      backTop = $('.nav-join .back');
+    footer = $('#footer'),
+    container = $('#container'),
+    content = $('.list'),
+    buttons = $('.buttons'),
+    joinBtn = $('.nav-join-link'),
+    backTop = $('.nav-join .back');
 
- // 与视频有关元素
-  var videoBox = $('#video'),
-      videoContent = $('#video video');
-
-  // 根字体自适应
-  var bodyWidth = 1980,
-      fontSize = 100;
-
-
-  $('html').css('font-size', $('body').width() * fontSize / bodyWidth + '%')
-  $(window).resize(function () {
-    $('html').css('font-size', $('body').width() * fontSize / bodyWidth  + '%')
-  })
-
-  //切换内容
-  var currpage = 0;
-  var index = 0;
-  var timer;
-  function nextPage() {
-    if (currpage == 5) {
-      $('.list').css('left', '0');
-      currpage = 0;
-    }
-
-    currpage++;
-    index = (index + 1) % 5;
-    iconChange(index);
-    $('.list').stop().animate({ 'left': '-' + currpage * 100 + '%' }, 800);
-
-  }
-
-  function iconChange(index) {
-    icons.eq(index).addClass('on').siblings().removeClass('on');
-  }
-
-  function stop() {
-    clearTimeout(timer);
-  }
-
-  function play() {
-    timer = setTimeout(function () {
-      nextPage();
-      play();
-    }, 5000);
-  }
-
-  play();
-
-  content.hover(stop, play)
-
-  buttons.on('click', function(e){
-    var $icon = $(e.target).parent();
-    index = $icon.index();
-    currpage = $icon.index();
-
-    icons.eq(index).addClass('on').siblings().removeClass('on');
-    $('.list').stop().animate({ 'left': '-' + currpage * 100 + '%' }, 800);
-  })
-
-
-  //join us
-  joinBtn.click(function () {
-    mainbody.fadeOut();
-    footer.fadeOut();
-    container.css('background-image','url(./images/backjoin.jpg)');
-  })
-
-  // 返回首页
-  backTop.click(function(){
-    mainbody.fadeIn();
-    footer.fadeIn();
-    container.css('background-image','url(./images/backimage.jpg)')
-  })
-
-
-
-  //loading加载
+  //加载
   var imgList = [
     './images/backimage.jpg',
     './images/backjoin.jpg',
@@ -98,48 +51,74 @@
     './images/page5.jpg'
   ]
 
-  $('.loadingNum').loadingTool(function(){
+  //loading加载
+
+  $('.loadingNum').loadingTool(function () {
     $('.text').fadeIn();
-    $('.loadingNum').fadeOut(function(){
+    $('.loadingNum').fadeOut(function () {
       $('#loading').fadeOut(800);
-      videoContent[0].play();
-    }); 
-    container.fadeIn();
-  },imgList)
+      $('#video video')[0].play();
+    });
+    $('#container').fadeIn();
+  }, imgList)
 
-  //接受视频地址
+  //切换内容
+  var currpage = 0;
+  var index = 0;
+  var timer;
+  function nextPage() {
+    if (currpage == 5) {
+      content.css('left', '0');
+      currpage = 0;
+    }
 
- 
-  $.ajax({
-    type : 'get',
-    url : "http://www.kilingzhang.com/api/url.php?url_id=f05485j0nx5",
-    dataType : "text",
-    success : function(resultUrl) {
-      // console.log(resultUrl);
-      videoContent.attr("src",resultUrl);
-    },
-    error : function() {
-      $('#video .msg').fadeIn();
-    }
-  })
-  //点击视频全部控制暂停
-  videoContent[0].onclick = function(){
-    if(this.paused){
-      this.play();
-    }else{
-      this.pause();
-    }
+    currpage++;
+    index = (index + 1) % 5;
+    iconChange(index);
+    content.stop().animate({ 'left': '-' + currpage * 100 + '%' }, 800);
+
   }
 
-  //关闭视频
-  $('.close').click(function(){
-    videoBox.fadeOut();
-    videoContent[0].pause();
+  function iconChange(index) {
+    icons.eq(index).addClass('on').siblings().removeClass('on');
+  }
+
+  function stop() {
+    clearTimeout(timer);
+  }
+
+  function playV() {
+    timer = setTimeout(function () {
+      nextPage();
+      playV();
+    }, 5000);
+  }
+
+  playV();
+
+  content.hover(stop, playV)
+
+  buttons.on('click', function (e) {
+    var $icon = $(e.target).parent();
+    index = $icon.index();
+    currpage = $icon.index();
+
+    icons.eq(index).addClass('on').siblings().removeClass('on');
+    content.stop().animate({ 'left': '-' + currpage * 100 + '%' }, 800);
   })
 
-  $('.video').click(function(){
-    videoBox.fadeIn();
-    videoContent[0].play();
+  //join us
+  joinBtn.click(function () {
+    mainbody.fadeOut();
+    footer.fadeOut();
+    container.css('background-image', 'url(./images/backjoin.jpg)');
+  })
+
+  // 返回首页
+  backTop.click(function () {
+    mainbody.fadeIn();
+    footer.fadeIn();
+    container.css('background-image', 'url(./images/backimage.jpg)')
   })
 
 })()

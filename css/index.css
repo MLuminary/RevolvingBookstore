@@ -1,103 +1,18 @@
-
-/*------------ 基础配置 ----------- */
-@font-face {
-  font-family: 'fzqk';
-  src: url('font/fzqk.eot');
-  src:
-    url('font/fzqk.eot?#font-spider') format('embedded-opentype'),
-    url('font/fzqk.woff') format('woff'),
-    url('font/fzqk.ttf') format('truetype'),
-    url('font/fzqk.svg') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'fzys';
-  src: url('font/fzys.eot');
-  src:
-    url('font/fzys.eot?#font-spider') format('embedded-opentype'),
-    url('font/fzys.woff') format('woff'),
-    url('font/fzys.ttf') format('truetype'),
-    url('font/fzys.svg') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-.clearfloat{
-  zoom: 1;
-}
-.clearfloat:after{
-  content: "";
-  clear: both;
-  display: table;
-}
-
-html,body {
-  width: 100%;
+html,body{
   height: 100%;
   min-height: 47rem;
   min-width: 88rem;
 }
 
-/* -------------结束---------------- */
-
 #container {
-  position: relative;
-  overflow: hidden;
+  height: 100%;
+  min-width: 82.15rem;
   background: url("../images/backimage.jpg") center center no-repeat;
   background-size: cover;
-  height: 100%;
-  width: 100%;
-  min-width: 82.15rem;
-  display: none;
-}
-
-/* nav */
-
-#nav {
-  position: relative;
-  height: 90px;
-  overflow: hidden;
-  line-height: 90px;
-}
-
-.nav-title {
-  font-family: "fzqk";
-  font-size: 2.375rem;
-  color: #fff;
-  height: 90px;
-  float: left;
-  margin-left: 40px;
-}
-
-.nav-join {
-  font-family: "fzqk";
-  font-size: 1.5rem;
-  float: right;
-  margin-right: 40px;
-}
-
-.nav-join .back,
-.nav-join .video{
-  color: #fff;
-  text-decoration: none;
-  margin-right: 1rem;
-  cursor: pointer;
-}
-
-.nav-join-link {
-  color: #fff;
-  cursor: pointer;
-  border-radius: 10px;
-  padding: 6px;
-  background-color: #e75656;
-  box-sizing: border-box;
 }
 
 
 /* mainbody */
-
 #mainbody {
   background-color: rgba(255, 255, 255, .3);
   width: 100%;
@@ -317,101 +232,3 @@ html,body {
 .buttons .on .after{
   right: -0.5rem;
 }
-
-/* 视频页面 */
-
-#video {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 5;
-}
-
-#video .close {
-  position: absolute;
-  font-size: 5rem;
-  color: #fff;
-  right: 5px;
-  cursor: pointer;
-  z-index: 99;
-}
-
-#video .msg {
-  position: absolute;
-  top: 2rem;
-  font-size: 3rem;
-  z-index: 99;
-  color: #fff;
-  text-align: center;
-  left: 0;
-  right: 0;
-  display: none;
-}
-
-/* 加载页面 */
-
-#loading {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  /* background: url("../images/loading.jpg") no-repeat right center; */
-  /* background-size: cover; */
-  background-color: #f3f2ee;
-  z-index: 999;
-  font-size: 2.278rem;
-}
-
-#loading p {
-  position: absolute;
-  margin-right: 12rem;
-  font-family: "fzqk";
-  top: 45%;
-  right: 0;
-  color: #787777;
-}
-
-#loading .text {
-  display: none;
-  cursor: pointer;
-  /* animation: changeLine infinite 2s; */
-}
-#loading .loadingNum {
-  margin-right: 15rem;
-}
-#loading .logo {
-  position: absolute;
-  width: 10rem;
-  height: 100%;
-  background:url("../images/logo.png") no-repeat center center;
-  background-size: contain;
-  right: 0;
-}
-/* 
-@keyframes changeLine{
-  0%{
-    letter-spacing: 0rem;
-  }
-  50%{
-    letter-spacing: .5px;
-  }
-  100%{
-    letter-spacing: 0rem;
-  }
-}
-
-@keyframes changeLine{
-  0%{
-    letter-spacing: 0rem;
-  }
-  50%{
-    letter-spacing: .5px;
-  }
-  100%{
-    letter-spacing: 0rem;
-  }
-} */
-
