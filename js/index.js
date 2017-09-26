@@ -48,7 +48,8 @@
     './images/page3-m.png',
     './images/page3-r.png',
     './images/page4.png',
-    './images/page5.jpg'
+    './images/page5.jpg',
+    './images/page5-t.jpg'
   ]
 
   //loading加载

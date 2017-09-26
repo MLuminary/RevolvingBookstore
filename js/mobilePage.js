@@ -18,7 +18,8 @@
     './images/page3-m.png',
     './images/m-page3-r.png',
     './images/m-page4.png',
-    './images/m-page5.jpg'
+    './images/m-page5.jpg',
+    './images/m-page5-t.jpg'
   ]
 //loading加载
 
@@ -26,7 +27,7 @@ $('.loadingNum').loadingTool(function(){
   $('.text').fadeIn();
   $('.loadingNum').fadeOut(function(){
     $('#loading').fadeOut(800);
-    $('#video video')[0].play();
+    // $('#video video')[0].play();
   }); 
   $('#container').fadeIn();
 },imgList)
@@ -36,7 +37,7 @@ $('.loadingNum').loadingTool(function(){
 joinBtn.click(function () {
   mainbody.fadeOut();
   footer.fadeOut();
-  container.css({'background-image':'url(./images/m-##backjoin.jpg)','height':"100%"});
+  container.css({'background-image':'url(./images/m-backjoin.jpg)','height':"100%"});
 })
 
 // 返回首页

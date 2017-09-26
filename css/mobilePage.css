@@ -27,6 +27,8 @@ html,body{
   width: 100%;
   position: relative;
   overflow: hidden;
+  margin-bottom: 5rem;
+  padding-bottom: 2rem;
 }
 
 .list {

@@ -138,12 +138,12 @@ html,body{
 .page5 {
   text-align: center;
 }
-.page5 img,
+.page5 .img-r,
 .page5 .imgDes{
   float: right;
 }
 
-.page5 img{
+.page5 .img-r{
   height: 40rem;
   margin-top: 5rem;
 }
@@ -174,7 +174,6 @@ html,body{
 }
 
 .page5 .para{
-  margin-left: 35rem;
   margin-top: 20rem;
   float: left;
 }
@@ -183,6 +182,12 @@ html,body{
   margin-top: 6.5rem;
 }
 
+
+.page5 .img-l {
+  float: left;
+  height: 40rem;
+  margin-top: 5rem;
+}
 
 
 /* footer */
